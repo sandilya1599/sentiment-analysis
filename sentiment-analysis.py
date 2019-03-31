@@ -1,6 +1,5 @@
 import tweepy
 import re
-from nltk import word_tokenize,sent_tokenize
 from nltk.tokenize import RegexpTokenizer
 from nltk.corpus import stopwords
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
@@ -67,7 +66,7 @@ def main():
 	try:
 		language=input('Enter the language:')
 	except:
-		language=''
-	analyze(query,no)
+		language='en'
+	analyze(query,no,language)
 if __name__=='__main__':
 	main()
