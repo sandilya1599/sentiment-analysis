@@ -40,7 +40,7 @@ def authorize():
 	api=tweepy.API(auth)
 	return api
 def analyze(query,limit=1000,language='en'):
-	summary={'Positive':0,'Negitive':0,'Neutral':0}
+	summary={'Positive':0,'Negative':0,'Neutral':0}
 	api=authorize()
 	sid=SentimentIntensityAnalyzer()
 	tweets=tweepy.Cursor(api.search,q=query,lang=language).items(limit)
@@ -55,7 +55,7 @@ def analyze(query,limit=1000,language='en'):
 		elif score['compound']>0:
 			summary['Positive']+=1
 		else:
-			summary['Negitive']+=1
+			summary['Negative']+=1
 	print('The tweets about the query %s are :'%query)
 	for keys in summary.keys():
 		print("No of %s tweets are %d"%(keys,summary[keys]))
